@@ -69,7 +69,8 @@ raw_us_2021_2 <- raw_us_2021_1[complete.cases(raw_us_2021_1), ]
 head(raw_us_2021_2)
 
 
-####Combine cleaned data into one big data set####
+#### Clean and combine the total data ####
+#Combine cleaned data into one big data set
 combined_cleaned_data <- bind_rows(raw_us_2018_2, raw_dk_2019_2, raw_us_2021_2)
 
 #re-number the rows after combining data
@@ -87,10 +88,48 @@ combined_cleaned_data <- combined_cleaned_data %>%
 #Show the first six lines to check
 head(combined_cleaned_data)
 
-#### Save data ####
+#Save combined total data
 write_csv(
   x = combined_cleaned_data,
   file = "starter_folder-main/data/analysis_data/combined_cleaned_data.csv"
 )
 
+
+####Combine and clean total US data ####
+#combine the us data
+combined_cleaned_data_us <- bind_rows(raw_us_2018_2, raw_us_2021_2)
+
+#re-number the rows after combining data
+combined_cleaned_data_us <- combined_cleaned_data_us %>%
+  mutate(...1 = row_number())
+
+#rename the first column
+combined_cleaned_data_us <- combined_cleaned_data_us %>%
+  rename(NO. = ...1)
+
+#Show the first six lines to check
+head(combined_cleaned_data_us)
+
+#Save combined us data
+write_csv(
+  x = combined_cleaned_data_us,
+  file = "starter_folder-main/data/analysis_data/combined_cleaned_data_us.csv"
+)
+
+
+#### Clean the dk dataset ####
+#re-number the rows after combining data
+raw_dk_2019_2 <- raw_dk_2019_2 %>%
+  mutate(...1 = row_number())
+
+#rename the first column
+combined_cleaned_data_us <- combined_cleaned_data_us %>%
+  rename(NO. = ...1)
+
+
+### Save dk data #### 
+write_csv(
+  x = combined_cleaned_data,
+  file = "starter_folder-main/data/analysis_data/combined_cleaned_data.csv"
+)
 

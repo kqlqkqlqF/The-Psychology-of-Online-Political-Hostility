@@ -37,6 +37,11 @@ raw_data_full <-
   read_csv(
     file = "../data/analysis_data/combined_cleaned_data.csv",
     show_col_types = FALSE)
+
+raw_data_full <-
+  read_csv(
+    file = "../data/as_data/combined_cleaned_data.csv",
+    show_col_types = FALSE)
 ```
 
 # Introduction
@@ -83,6 +88,7 @@ kable(raw_data_full_head)
 #| label: fig-one
 #| fig-cap: Scatter Plot of Agression versus Hostile Offline Scores 
 #| echo: false
+#| message: false
 
 ####Make Figure 1####
 # Only show the top 10 rows of our table since there's more than 2000 rows in total
@@ -97,6 +103,7 @@ ggplot(raw_data_full, aes(x = aggression, y = hostile_offline)) +
 #| label: fig-two
 #| fig-cap: Scatter Plot of Agression versus Hostile Online Scores 
 #| echo: false
+#| message: false
 
 ####Make Figure 1####
 # Only show the top 10 rows of our table since there's more than 2000 rows in total
@@ -111,6 +118,7 @@ ggplot(raw_data_full, aes(x = aggression, y = hostile_online)) +
 #| label: fig-three
 #| fig-cap: Scatter Plot of Agression versus Hostile Online Scores Minus Hostile Offline Scores
 #| echo: false
+#| message: false
 
 ####Make Figure 3####
 # Make a Scatter plot
@@ -128,5 +136,18 @@ ggplot(raw_data_full, aes(x = aggression, y = online_offline)) +
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     legend.position = "none"  # Remove legend
   ) 
+
+```
+
+```{r}
+#| label: fig-tab-two
+#| fig-cap: Scatter Plot of Agression versus Hostile Online Scores Minus Hostile Offline Scores
+#| echo: false
+#| message: false
+
+####Calculate the t-test result between Online and Offline hostile score
+t_test_onoff <- t.test(raw_data_full$hostile_online, raw_data_full$hostile_offline)
+t_test_onoff
+
 
 ```
