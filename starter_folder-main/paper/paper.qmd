@@ -38,13 +38,18 @@ raw_data_full <-
     file = "../data/analysis_data/combined_cleaned_data.csv",
     show_col_types = FALSE)
 
-raw_data_full <-
+raw_data_us <-
   read_csv(
-    file = "../data/as_data/combined_cleaned_data.csv",
+    file = "../data/analysis_data/combined_cleaned_data_us.csv",
+    show_col_types = FALSE)
+
+raw_data_dk <-
+  read_csv(
+    file = "../data/analysis_data/combined_cleaned_data_dk.csv",
     show_col_types = FALSE)
 ```
 
-# Introduction
+# Introduction [^1]
 
 Since as early as 2000, there has been a desire for people to engage in political discussions anonymously through social media platforms (Dahlberg, 2001). With the rapid expansion and development of the internet, it has become extremely common for individuals to connect to it using electronic devices. By 2024, the registered user base of the leading social media platform, Instagram, had reached an astounding 2.5 billion (1). This staggering number serves as compelling evidence for the global shift into the internet era. However, along with the globalization of the internet, a series of problems arising from online interactions have become increasingly apparent, with one of the most notable being the toxic atmosphere prevalent in online discussions. Nowadays, online discussions are rife with users launching vicious attacks against each other, and according to a survey conducted in the United States, politics is one of the most contentious topics that easily sparks heated debates (Duggan, 2017). Furthermore, apart from the chaos caused by personal attacks among individual users, online trolling has also become a tool for manipulating public opinion. For instance, researchers have found that during elections, social media users engage in partisan attacks that completely overshadow substantive issues, leading to a wave of partisan confrontation (2). Today, online political hostility has been identified as a " key question for achieving impact on online harassment" (Matias, 2016, 1).
 
@@ -54,6 +59,7 @@ The article "The Psychology of Online Political Hostility: A Comprehensive, Cros
 
 Based on the psychological viewpoints mentioned earlier and the survey results of Bor Alexander and Michael Bang Petersen, we have made an assumption: individuals with more aggressive personalities are more likely to exhibit different behaviors in online and offline political discussions, because in the unregulated world of the internet, they are more likely to display aggression beyond offline discussions. Our study primarily focuses on two aspects: (1) comparing political discussions in online and offline environments and (2) evaluating differences in the level of aggression among individuals. In summary, our article will first discuss the data sources and analysis methods used in the original paper. Then, we will conduct secondary analysis on the data from the original paper to discuss whether our hypothesis, "individuals with more aggressive personalities are more likely to exhibit different behaviors in online and offline political discussions," holds true.
 
+[^1]: Rstudio [@citeR] was used for producing the code and this paper. A series of R packages were used: [@gg2]. [@knitr], [@kable], [@janet], and [@tidy].
 
 # Data
 
@@ -62,11 +68,17 @@ The paper used for replication is from the "American Political Science Review," 
 
 ## Methodology
 
-This paper will replicate the survey data originally collected for the study by Bor Alexander and Michael Bang Petersen (2021). They selected the United States and Denmark as the source of the original data, considering them to be two countries with stark differences in many aspects, thus likely to produce more credible original data (Bor Alexander and Michael Bang Petersen, 2021). The United States was characterized as a high-polarization, high-conflict, low-trust, and low-participation country, while Denmark was described as a low-polarization, low-conflict, high-trust, and high-participation country (Nelson and Shavitt, 2002). Surveys were disseminated across multiple public platforms to collect feedback from users of different platforms, aiming to obtain the most authentic responses, as some social platforms may censor highly aggressive political discourse. To reduce errors, many questions in the survey were time-bound within the past thirty days to prevent significant distortion of subjects' memories over time, which could affect the experimental results. Additionally, to better capture the intensity of emotions, questions were structured not as simple yes-or-no queries but rather required subjects to select a numerical value within a range that best corresponded to their situation. For instance, for the question "I have trouble controlling my temper," participants could choose any number within the range of 1 to 7, with higher numbers indicating a greater alignment with the description provided in the question.
+This paper will replicate the survey data originally collected for the study by Bor Alexander and Michael Bang Petersen (2021). They selected the United States and Denmark as the source of the original data, considering them to be two countries with stark differences in many aspects, thus likely to produce more credible original data (Bor Alexander and Michael Bang Petersen, 2021). The United States was characterized as a high-polarization, high-conflict, low-trust, and low-participation country, while Denmark was described as a low-polarization, low-conflict, high-trust, and high-participation country (Nelson and Shavitt, 2002). Surveys were disseminated across multiple public platforms to collect feedback from users of different platforms, aiming to obtain the most authentic responses, as some social platforms may censor highly aggressive political discourse. 
 
 ## Features
 
+As mentioned before, the researchers constructed a questionnaire to assess the hostile and aggression level. To reduce errors, many questions in the survey were time-bound within the past thirty days to prevent significant distortion of subjects' memories over time, which could affect the experimental results. Additionally, to better capture the intensity of emotions, questions were structured not as simple yes-or-no queries but rather required subjects to select a numerical value within a range that best corresponded to their situation. For instance, for the question "I have trouble controlling my temper," participants could choose any number within the range of 1 to 7, with higher numbers indicating a greater alignment with the description provided in the question.Using this method, the researchers collected over 4,200 responses, gathered in the United States in 2018, 2019, and 2021, as well as in Denmark in 2019. Given that our paper primarily focuses on (1) comparing political discussions in online and offline environments and (2) evaluating differences in the level of aggression among individuals, we needed to collect data on hostile_online, hostile_offline, and aggression from the original dataset. However, the data collected in the United States in 2019 did not include information related to aggression. As a result, we did not utilize this portion of the data in our analysis, opting instead to use the remaining dataset. Similarly, we also removed data with “NA” in any of the three content to minimize the error.
 
+In the source dataset, the values for hostile_online, hostile_offline, and aggression are calculated as the averages of numerical responses given by participants to a series of questionnaire questions. For example, if a participant responds to 12 questions related to aggression with 1, 2, 3, 4, 5, 6, 7, 1, 1, 1, 1, and 1, their aggression value would be calculated as (0 + 1 + 2 + 3 + 4 + 5 + 6 + 0 + 0 + 0 + 0 + 0) / 12 = 1.75. The reason for subtracting one from each answer before calculation is because the response range is between 1 and 7, but for more precise results, we shift the range to 0-6 for calculation purposes. The calculation process for hostile_online and hostile_offline follows the same steps.
+
+# Result
+
+First, we integrated all the data together, retaining only the values of hostile_online, hostile_offline, and aggression for each dataset. To understand how aggression affects an individual's behavior in online and offline political discussions, we calculated the difference between hostile_online and hostile_offline for each dataset. Since the dataset was consisted with over 3200 entries, we display a preview of the first ten rows in (@fig-tab-one). We have constructed (@fig-one), (@fig-two) and (@fig-three) using these data.
 
 ```{r}
 #| label: fig-tab-one
@@ -95,9 +107,11 @@ kable(raw_data_full_head)
 # Scatter plot
 ggplot(raw_data_full, aes(x = aggression, y = hostile_offline)) +
   geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue", linetype = "dashed") +
   labs(x = "Agression", y = "Hostile Offline Score") 
-
 ```
+
+The relationship between the level of aggression and the hostile level during offline political communication was demonstrated in (@fig-one). The scatter plot reveals an interesting trend: despite some scattered points, there appears to be a slight upward trend, indicating a weak positive correlation. Additionally, we've incorporated a best-fit line to underscore this observed trend. This trend suggests that as individuals' aggression levels increase, their hostility in offline political discussions also tends to rise. Notably, the majority of data points cluster in the lower aggression and hostility regions, implying that most participants perceive themselves as having moderate temperaments and exhibit less hostility during offline political exchanges. 
 
 ```{r}
 #| label: fig-two
@@ -110,9 +124,13 @@ ggplot(raw_data_full, aes(x = aggression, y = hostile_offline)) +
 # Scatter plot
 ggplot(raw_data_full, aes(x = aggression, y = hostile_online)) +
   geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue", linetype = "dashed") +
   labs(x = "Agression", y = "Hostile Online Score") 
-
 ```
+
+The relationship between the level of aggression and the hostile level during online political communication was demonstrated in (@fig-two). Similar with (@fig-one), the scatter plot reveals a upward trend, indicating a weak positive correlation. This trend suggests that as individuals' aggression levels increase, their hostility in online political discussions also tends to rise. 
+
+Interestingly, we find that quite a few people perceive themselves are very aggressive, where their aggressive level is between 0.75 and 1.0. However, they only gain 0.0 to 0.25 hostile level for either online or offline discussions. At the same time, there's only 3 people rate themselves as low aggressive level (0.0 - 0.25) but retain high hostile online or offline scores (0.75 - 1.0).
 
 ```{r}
 #| label: fig-three
@@ -125,7 +143,7 @@ ggplot(raw_data_full, aes(x = aggression, y = hostile_online)) +
 ggplot(raw_data_full, aes(x = aggression, y = online_offline)) +
   geom_point(color = "skyblue", size = 3, alpha = 0.7) +  # Customize point appearance
   geom_smooth(method = "lm", se = FALSE, color = "darkblue", linetype = "dashed") +  # Add best-fit line
-  labs(x = "Aggression", y = "Difference Between Hostile Online and Offline") +
+  labs(x = "Aggression", y = "Difference of Hostile Online and Offline") +
   theme_minimal() +  # Use a minimal theme for a professional look
   theme(
     axis.text = element_text(size = 12, color = "black"),  # Customize axis text size and color
@@ -136,18 +154,76 @@ ggplot(raw_data_full, aes(x = aggression, y = online_offline)) +
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     legend.position = "none"  # Remove legend
   ) 
-
 ```
 
+The relationship between level of aggression and the difference between online and offline hostile scores was demonstrated in (@fig-three). The calculation of differences involves subtracting the offline hostile score from the online hostile score. Consequently, if the offline hostile score exceeds the online score, the difference becomes negative. In (@fig-three), we observe a balanced distribution of points around the y-axis, with values clustering near the y=0 horizontal line. This indicates that most participants perceive a similar level of hostility in their online and offline political discussions. The addition of the best-fit line further emphasizes this point, since it aligns closely with the y=0 line. Overall, regardless of their aggression levels, participants tend to perceive a similar level of hostility in both online and offline political exchanges.
+
+In addition to examining the relationship between aggression levels and the degree of hostility in online and offline discussions, we conducted t-tests to assess the differences in hostility between online and offline political exchanges. This aimed to determine whether there were statistically significant differences in the hostility levels between online and offline political discussions. For a comprehensive analysis, we performed t-tests separately for (1) the overall data on online and offline hostility, (2) data collected exclusively in the United States, (3) data collected solely in Denmark, (4) online hostility in US data compared to Danish data, and (5) offline hostility in US data compared to Danish data. The results of these t-tests are presented in (@fig-tab-two).
+
+\newpage
 ```{r}
 #| label: fig-tab-two
-#| fig-cap: Scatter Plot of Agression versus Hostile Online Scores Minus Hostile Offline Scores
+#| fig-cap: Summery of T-Test result
 #| echo: false
 #| message: false
 
 ####Calculate the t-test result between Online and Offline hostile score
-t_test_onoff <- t.test(raw_data_full$hostile_online, raw_data_full$hostile_offline)
-t_test_onoff
+t_test_onoff_total <- t.test(raw_data_full$hostile_online, raw_data_full$hostile_offline)
 
+t_test_onoff_us <- t.test(raw_data_us$hostile_online, raw_data_us$hostile_offline)
 
+t_test_onoff_dk <- t.test(raw_data_dk$hostile_online, raw_data_dk$hostile_offline)
+
+t_test_on_dkus <- t.test(raw_data_us$hostile_online, raw_data_dk$hostile_online)
+
+t_test_off_dkus <- t.test(raw_data_us$hostile_offline, raw_data_dk$hostile_offline)
+
+pvalue <- c(t_test_onoff_total$p.value, t_test_onoff_us$p.value, t_test_onoff_dk$p.value, t_test_on_dkus$p.value, t_test_off_dkus$p.value)
+tvalue <- c(t_test_onoff_total$statistic, t_test_onoff_us$statistic, t_test_onoff_dk$statistic, t_test_on_dkus$statistic, t_test_off_dkus$statistic)
+df <- c(t_test_onoff_total$parameter, t_test_onoff_us$parameter, t_test_onoff_dk$parameter, t_test_on_dkus$parameter, t_test_off_dkus$parameter)
+
+t_test_table <- tibble(
+  Nation = c("Total on_off", "US on_off", "DK on_off", "USDK on", "USDK off"),
+  P_Value = pvalue,
+  T_Value = tvalue,
+  DF = df
+)
+
+t_test_table$P_Value <- format(t_test_table$P_Value, scientific = TRUE)
+t_test_table$T_Value <- format(round(t_test_table$T_Value, 4), nsmall = 4,scientific = FALSE)
+
+kable(t_test_table)
 ```
+
+In (@fig-tab-two), we observe that the p-values for online and offline hostility levels, whether in the overall dataset or in the individual datasets from the United States and Denmark, far exceed 0.05. This suggests that there is no significant difference in hostility levels between online and offline political discussions. This finding is consistent with the conclusion drawn in the original paper (Bor Alexander and Michael Bang Petersen, 2021). However, in the t-tests comparing online/offline hostility levels between the United States and Denmark, we note that the p-values are less than 0.05. This indicates a significant difference in the level of political discussion hostility between the United States and Denmark, both in online and offline settings.
+
+```{r}
+#| label: fig-tab-three
+#| fig-cap: Summery of Mean Hostile Score for US and DK
+#| echo: false
+#| message: false
+
+us_mean_on <- mean(raw_data_us$hostile_online)
+us_mean_off <- mean(raw_data_us$hostile_offline)
+dk_mean_on <- mean(raw_data_dk$hostile_online)
+dk_mean_off <- mean(raw_data_dk$hostile_offline)
+
+mean_table <- tibble(
+  Category = c("US_ON", "US_OFF", "DK_ON", "DK_OFF"),
+  Mean = c(us_mean_on, us_mean_off, dk_mean_on, dk_mean_off)
+)
+
+kable(mean_table)
+```
+
+In (@fig-tab-three), we present the average hostility levels of political discussions, both online and offline, in Denmark and the United States. It is evident that regardless of whether the discussions are conducted online or offline, the level of political discussion hostility is higher in the United States compared to Denmark. Combining these findings with those presented in Table 2, we can conclude that there is a significant difference in the hostility levels of political discussions between the United States and Denmark, with the United States exhibiting higher hostility levels in both online and offline discussions.
+
+# Discussion
+(what did we learn from this study?)
+
+## Limitation
+
+## Next step
+
+\newpage
+# Bibliography
