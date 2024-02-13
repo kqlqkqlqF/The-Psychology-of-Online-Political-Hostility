@@ -8,6 +8,7 @@ If you want to replicate this paper, please click on the green button on the rig
 
 The repo is structured as:
 
+-   `main_folder` contains everything listed below:
 -   `data` contains all kinds of data used in this research. including `analysis_data`, `raw_data`, and `simulated_data`.
 -   `other` contains `literature`, which includes all literature referenced in this paper; `llm`, which contain the LLM statement; and `sketches`, which are the figures we drawn for a pre-sketch. 
 -   `paper` contains the qmd document used to generate the paper,the pdf document of paper, and the reference bibliography file. 
