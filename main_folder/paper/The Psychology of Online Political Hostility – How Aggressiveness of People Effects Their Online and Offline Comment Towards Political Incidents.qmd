@@ -236,5 +236,136 @@ Thirdly, we can try to include more questions that collect objective data and co
 
 Furthermore, in this study, we found that the level of aggression does not affect the hostility exhibited by individuals in online and offline political discussions. Therefore, we will explore other factors that may contribute to the difference in hostility between online and offline discussions. Additionally, since we obtained the same results as the original paper,  that is there is no significant difference in hostility between online and offline political discussions, we can also investigate the interesting question: if there is no difference in hostility between online and offline discussions, why do people generally perceive online discussions as more hostile? This will be an important direction for our future research.
 
+# Appendix
+
+The full questionnaire:
+
+\textbf{Online hostility battery}
+
+Now please think about the past 30 days, specifically. How often did the following happen to you in political discussions that occur on the Internet, including social media and comments sections?
+
+1.	I post or share political content or comments, which get flagged or deleted for violating the site’s guidelines. 
+2.	I get banned or blocked from a website for posting or sharing political content or comments, which violate the site’s guidelines.  
+3.	I post or share political content or comments, which I later regretted or felt ashamed of. 
+4.	I post or share political content or comments, which could be taken as offensive or aggressive.
+5.	I post or share political content or comments, which could be taken as a threat or harassment.
+6.	[In S2 & S3] I had a difficult time tempering my emotions. 
+
+Please think about the past 30 days, specifically. How often did the following happen to you in text-based political discussions that occur on the Internet, such as on social media or in comments sections?
+
+1.	I made fun of my political opponents.
+2.	I cursed a lot in a political discussion. 
+3.	I made a comment in a political discussion that others may find hurtful. 
+4.	In a conversation with like-minded people, we made insensitive remarks about our opponents
+5.	I participated in a political discussion that was aggressive, uncivil or hostile.
+6.	In the heat of a political discussion, I got out of control. 
+7.	I humiliated or bullied others for their political views or actions. 
+8.	I threatened or harassed my political opponents.
+
+\textbf{Offline hostility battery}
+
+Now please think about the past 30 days, specifically. How often do the following happen to you in political discussions that occur face-to-face?
+1.	I make political comments, which I later regret or feel ashamed of.
+2.	I make political comments, which could be taken as offensive or aggressive.
+3.	I make political comments, which could be taken as a threat or harassment.
+4.	[In S2 & S3] I had a difficult time tempering my emotions. 
+
+Please think about the past 30 days, specifically. How often did the following happen to you in political discussions that occur in a conversation, where you could hear and see the other person?
+
+1.	I made fun of my political opponents.
+2.	I cursed a lot in a political discussion. 
+3.	I made a comment in a political discussion that others may find hurtful. 
+4.	In a conversation with like-minded people, we made insensitive remarks about our opponents
+5.	I participated in a political discussion that was aggressive, uncivil or hostile.
+6.	In the heat of a political discussion, I got out of control. 
+7.	I humiliated or bullied others for their political views or actions. 
+8.	I threatened or harassed my political opponents.
+
+\textbf{Talking about politics}
+
+[Offline] How often do you talk about politics or public affairs face-to-face, with the following?
+[Online] How often do you talk about politics or public affairs on the Internet, with the following?
+1.	Family and friends
+2.	Co-workers and acquaintances
+3.	Strangers
+4.	People who agree with me
+5.	People who disagree with me
+
+\textbf{Perception batteries}
+
+[Offline] How often do you experience the following in face-to-face political discussions?
+[Online] How often do you experience the following in political discussions that occur on the Internet? 
+
+1.	My discussion partner does not allow me to drop the discussion, even though I would like to
+2.	I ruminate over the content of a discussion after it is over
+3.	I spend a lot of energy during a discussion to ruminate over the arguments that are being made or that I should make 
+4.	People involve me in a discussion that I do not feel like having
+5.	I continue a discussion even though I do not enjoy it
+6.	A discussion is quickly over
+7.	When we cannot agree, we just switch to talking about something else
+8.	When my discussion partner says something that might be offensive, he or she apologizes
+
+\textbf{Witnessing hostility}
+
+[Offline] How often do the following happen to you in political discussions that occur face-to-face?
+[Online] How often do the following happen to you in political discussions that occur on the Internet?
+
+1.	I am offended or insulted by someone. 
+2.	I witness that someone I know is offended or insulted by someone. 
+3.	I witness that someone I do not know is offended or insulted by someone. 
+
+\textbf{Difficulties in Emotion Regulation Scale}
+
+How much do you disagree or agree with the following statements?
+
+1.	When I'm upset, I feel ashamed at myself for feeling that way.
+2.	When I'm upset, I become angry with myself for feeling that way.
+3.	When I'm upset, I have difficulty focusing on other things.
+4.	When I'm upset, I have difficulty getting work done.
+5.	When I'm upset I lose control over my behaviors.
+6.	I experience my emotions as overwhelming and out of control.
+7.	I pay attention to how I feel. 
+8.	When I am upset, I take time to figure out what I'm really feeling.
+9.	When I'm upset, I believe there is nothing I can do to make myself feel better.
+10.	When I'm upset, I believe that wallowing in it is all I can do.
+11.	I have difficulty making sense out of my feelings.
+12.	I have no idea how I am feeling.
+
+\textbf{Status Driven Risk Taking Scale}
+
+How much do you disagree or agree with the following statements?
+
+1.	I would rather live as an average person in a safe place than live as a rich and powerful person in a dangerous place. 
+2.	I would enjoy being a famous and powerful person, even if it meant a high risk of assassination. 
+3.	If the pay was really high, I would be willing to work with extremely explosive materials. 
+4.	I would risk my life for a good chance of finding a huge amount of buried treasure. 
+5.	If I could become rich and famous by winning a major competition, I would put my life on the line to win it. 
+6.	I would like to live in a country where people who take huge risks have the chance to gain superior social status. 
+7.	No matter how good the pay of perks; I would not want to be a spy who takes very dangerous assignments. 
+8.	I would rather live a secure life as an ordinary person than risk everything to be at the top.
+9.	For a very high-status job, I would be willing to live in a place that had an extremely high crime rate. 
+10.	I would take a very high-status job even if I had to live in a place where there are many deadly diseases. 
+11.	I would volunteer for a risky medical experiment if it paid me enough to retire early. 
+12.	Being an organized crime boss would be far too dangerous for me. 
+13.	To become a billionaire, I would be willing to trade 10 years from my life expectancy. 
+14.	I would not go to a warzone even if the business opportunities were extremely profitable.
+
+\textbf{Trait aggression}
+
+How much do you disagree or agree with the following statements?
+
+1.	I have trouble controlling my temper.
+2.	I am an even-tempered person.
+3.	Sometimes I fly off the handle for no good reason.
+4.	Given enough provocation, I may hit another person.
+5.	There are people who pushed me so far that we came to blows.
+6.	If I have to resort to violence to protect my rights, I will.
+7.	I tell my friends openly when I disagree with them.
+8.	When people annoy me, I may tell them what I think of them.
+9.	My friends say that I’m somewhat argumentative.
+10.	Other people always seem to get the breaks.
+11.	I sometimes feel that people are laughing at me behind my back.
+12.	When people are especially nice, I wonder what they want.
+
 \newpage
 # Bibliography
