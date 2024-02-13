@@ -8,7 +8,6 @@ format:
   pdf:
     toc: true
     number-sections: true
-number-sections: true
 abstract: "In contemporary society, the widespread influence of the internet and electronic technology has made the online world an indispensable part of daily human life. However, amidst this digitalization, a significant challenge has emerged: the proliferation of hostile online discussion environments. This phenomenon has sparked a fundamental inquiry: why do online interactions consistently exhibit greater hostility than offline communication? What is the relationship between this trend and individuals' inherent aggressiveness? This paper aims to replicate and analyze data from existing studies investigating the statistical disparities in individual behavior during online and offline political discussions. Additionally, it employs secondary research to explore how individuals' levels of aggressiveness correlate with the observed differences in online and offline political discourse."
 bibliography: referencespaper2.bib
 ---
@@ -218,6 +217,7 @@ kable(mean_table)
 In (@fig-tab-three), we present the average hostility levels of political discussions, both online and offline, in Denmark and the United States. It is evident that regardless of whether the discussions are conducted online or offline, the level of political discussion hostility is higher in the United States compared to Denmark. Combining these findings with those presented in Table 2, we can conclude that there is a significant difference in the hostility levels of political discussions between the United States and Denmark, with the United States exhibiting higher hostility levels in both online and offline discussions.
 
 # Discussion
+
 
 Our analysis reveals a positive correlation between individuals' levels of aggression and the degree of hostility they exhibit in both online and offline political discussions. This suggests that individuals with higher aggression tend to display more pronounced political hostility regardless of the medium. While the original paper focused on the impact of status-driven risk-taking on online versus offline hostility, finding a positive correlation, our study extends this understanding by demonstrating that the dimension of aggression plays a similar role, highlighting the significant influence of personal traits on political hostility in both platforms.
 
