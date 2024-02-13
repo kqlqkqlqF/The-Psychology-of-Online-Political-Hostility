@@ -123,13 +123,12 @@ raw_dk_2019_2 <- raw_dk_2019_2 %>%
   mutate(...1 = row_number())
 
 #rename the first column
-combined_cleaned_data_us <- combined_cleaned_data_us %>%
+raw_dk_2019_2 <- raw_dk_2019_2 %>%
   rename(NO. = ...1)
 
-
-### Save dk data #### 
+#Save dk data
 write_csv(
-  x = combined_cleaned_data,
-  file = "starter_folder-main/data/analysis_data/combined_cleaned_data.csv"
+  x = raw_dk_2019_2,
+  file = "starter_folder-main/data/analysis_data/combined_cleaned_data_dk.csv"
 )
 
