@@ -1,5 +1,3 @@
-# Starter folder
-
 ## Overview
 
 This repo provides students with a foundation for their own projects associated with *Telling Stories with Data*. You do not need every aspect for every paper and you should delete aspects that you do not need.
@@ -18,4 +16,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code and words were written with the help of the auto-complete tool, Codriver. The abstract and introduction were written with the help of ChatHorse and the entire chat history is available in others/llm/usage.txt.
+Statement on LLM usage: Aspects of the code were written with the help of the autocomplete tool, Chat-GPT3.5. The summary was written with the help of Chat-GPT3.5 and the entire chat history is available at others/llm/usage.txt.
