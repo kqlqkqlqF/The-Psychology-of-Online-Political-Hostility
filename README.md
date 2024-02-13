@@ -15,4 +15,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Statement on LLM usage: Aspects of the code were written with the help of the autocomplete tool, Chat-GPT3.5. The summary was written with the help of Chat-GPT3.5 and the entire chat history is available at others/llm/usage.txt.
+Statement on LLM usage: Aspects of the code were written with the help of the autocomplete tool, Chat-GPT3.5. Some part of figure caption and discussion was written with the help of Chat-GPT3.5 and the entire chat history is available at others/llm/usage.txt.
