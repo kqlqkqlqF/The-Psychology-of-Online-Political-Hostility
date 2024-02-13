@@ -1,9 +1,8 @@
 ## Overview
 
-This repo provides students with a foundation for their own projects associated with *Telling Stories with Data*. You do not need every aspect for every paper and you should delete aspects that you do not need.
+This repo is for the paper "The Psychology of Online Political Hostility -- How Aggressiveness of People Effects Their Online and Offline Comment Towards Political Incidents". This article was replicated from the article "The Psychology of Online Political Hostility -- A Comprehensive, Cross-National Test of the Mismatch Hypothesis" by Bor Alexander and Michael Bang Petersen in 2021, the doi for the original paper is 10.1017/S0003055421000885.
 
-To use this folder, click the green "Code" button", then "Download ZIP". Move the downloaded folder to where you want to work on your own computer, and then modify it to suit.
-
+If you want to replicate this paper, please click on the green button on the right and press "download zip". It is important to keep the original file structure while you are running the code. Otherwise, the code will be leaded to a wrong directory and error might emerge.
 
 ## File Structure
 
