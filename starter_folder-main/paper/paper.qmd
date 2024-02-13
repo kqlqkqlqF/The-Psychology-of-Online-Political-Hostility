@@ -223,7 +223,14 @@ In (@fig-tab-three), we present the average hostility levels of political discus
 
 ## Limitation
 
+This study has room for improvement. 
+
+Firstly, as mentioned earlier, the data used in this study comes from the original data of Bor Alexander and Michael Bang Petersen's research. Although they collected over 4800 survey results from the United States and Denmark, the data from Denmark amounted to only about one thousand, while the data from the United States overwhelmingly dominated with around 3800 responses. Despite the data from the United States being used extensively, the imbalance in sample sizes between the two countries may lead to errors in the overall data results. This is because the United States was characterized as a high-polarization, high-conflict, low-trust, and low-participation country, while Denmark was described as a low-polarization, low-conflict, high-trust, and high-participation country (Nelson and Shavitt, 2002), and researchers believed that these opposite characteristics could make the results representative of a wider range of applications. In fact, we also verified this point in the results,  in online and offline political discussions, the hostility level of the American sample was significantly higher than that of the Danish sample. Therefore, the unequal sample sizes of the United States and Denmark may bias the research results towards the political discussion environment in the United States.
+
+Secondly, the data collection method, which is questionnaire,  may also affect the accuracy of the survey results. Firstly, as a form of survey that allows respondents to fill in voluntarily, the questionnaire can only collect subjective answers from respondents, without objective evaluation. For example, in the question "Are you an even-tempered person," the respondent may actually have a quick temper, but subjectively believes that they are a calm person, and the questionnaire can only yield "even-tempered" as a result. Secondly, although the survey was posted on various websites, not limited to a single social media platform, data was not collected both in online and offline environment, which could introduce sampling bias. Moreover, when respondents see the survey information online and voluntarily participate in the survey, individuals who are more relevant to the survey information and those with specific personalities may be more inclined to participate in the survey, rather than closing the webpage. (Imagine someone who afraid of inconvenience seeing a survey, they are more likely to ignore it than participate in filling it out.) Therefore, when online surveys are sent to people we don't know, and when only some people choose to take part spontaneously, the survey results might not be very reliable (Andrade C. 2020).
+
 ## Next step
+
 
 \newpage
 # Bibliography
