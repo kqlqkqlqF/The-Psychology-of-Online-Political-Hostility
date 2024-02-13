@@ -102,8 +102,7 @@ kable(raw_data_full_head)
 #| message: false
 
 ####Make Figure 1####
-# Only show the top 10 rows of our table since there's more than 2000 rows in total
-# Scatter plot
+# Scatter plot with a best fit line
 ggplot(raw_data_full, aes(x = aggression, y = hostile_offline)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "blue", linetype = "dashed") +
@@ -118,9 +117,8 @@ The relationship between the level of aggression and the hostile level during of
 #| echo: false
 #| message: false
 
-####Make Figure 1####
-# Only show the top 10 rows of our table since there's more than 2000 rows in total
-# Scatter plot
+####Make Figure 2####
+# Scatter plot with a best fit line
 ggplot(raw_data_full, aes(x = aggression, y = hostile_online)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "blue", linetype = "dashed") +
@@ -141,14 +139,14 @@ Interestingly, we find that quite a few people perceive themselves are very aggr
 # Make a Scatter plot
 ggplot(raw_data_full, aes(x = aggression, y = online_offline)) +
   geom_point(color = "skyblue", size = 3, alpha = 0.7) +  # Customize point appearance
-  geom_smooth(method = "lm", se = FALSE, color = "darkblue", linetype = "dashed") +  # Add best-fit line
+  geom_smooth(method = "lm", se = FALSE, color = "darkblue", linetype = "dashed") +  # Add a  best-fit line
   labs(x = "Aggression", y = "Difference of Hostile Online and Offline") +
-  theme_minimal() +  # Use a minimal theme for a professional look
+  theme_minimal() +  # Use a minimal theme for a better look
   theme(
-    axis.text = element_text(size = 12, color = "black"),  # Customize axis text size and color
-    axis.title = element_text(size = 12, color = "black", face = "bold"),  # Customize axis title size, color, and style
-    plot.title = element_text(size = 12, color = "black", face = "bold"),  # Customize plot title size, color, and style
-    panel.background = element_rect(fill = "white", color = "black"),  # Customize panel background color
+    axis.text = element_text(size = 12, color = "black"),  # Customize axis text
+    axis.title = element_text(size = 12, color = "black", face = "bold"),  # Customize axis title
+    plot.title = element_text(size = 12, color = "black", face = "bold"),  # Customize plot title
+    panel.background = element_rect(fill = "white", color = "black"),  # Customize panel background
     panel.grid.major = element_line(color = "lightgray"),  # Customize major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     legend.position = "none"  # Remove legend
@@ -166,17 +164,18 @@ In addition to examining the relationship between aggression levels and the degr
 #| echo: false
 #| message: false
 
-####Calculate the t-test result between Online and Offline hostile score
+####Calculate the t-test result between Online and Offline hostile score####
+#The t-test result between Total Online and Offline hostile score
 t_test_onoff_total <- t.test(raw_data_full$hostile_online, raw_data_full$hostile_offline)
-
+#The t-test result between US Online and Offline hostile score
 t_test_onoff_us <- t.test(raw_data_us$hostile_online, raw_data_us$hostile_offline)
-
+#The t-test result between DK Online and Offline hostile score
 t_test_onoff_dk <- t.test(raw_data_dk$hostile_online, raw_data_dk$hostile_offline)
-
+#The t-test result between US and DK Online hostile score
 t_test_on_dkus <- t.test(raw_data_us$hostile_online, raw_data_dk$hostile_online)
-
+#The t-test result between US and DK Offline hostile score
 t_test_off_dkus <- t.test(raw_data_us$hostile_offline, raw_data_dk$hostile_offline)
-
+#add all of these t-test results to a tibble, only remain p value, t value and df
 pvalue <- c(t_test_onoff_total$p.value, t_test_onoff_us$p.value, t_test_onoff_dk$p.value, t_test_on_dkus$p.value, t_test_off_dkus$p.value)
 tvalue <- c(t_test_onoff_total$statistic, t_test_onoff_us$statistic, t_test_onoff_dk$statistic, t_test_on_dkus$statistic, t_test_off_dkus$statistic)
 df <- c(t_test_onoff_total$parameter, t_test_onoff_us$parameter, t_test_onoff_dk$parameter, t_test_on_dkus$parameter, t_test_off_dkus$parameter)
@@ -187,10 +186,10 @@ t_test_table <- tibble(
   T_Value = tvalue,
   DF = df
 )
-
+#format the numbers for better look
 t_test_table$P_Value <- format(t_test_table$P_Value, scientific = TRUE)
 t_test_table$T_Value <- format(round(t_test_table$T_Value, 4), nsmall = 4,scientific = FALSE)
-
+#make a table
 kable(t_test_table)
 ```
 
@@ -202,16 +201,17 @@ In (@fig-tab-two), we observe that the p-values for online and offline hostility
 #| echo: false
 #| message: false
 
+#### Calculate the mean value for US and DK Online and Offline Hostile Score####
 us_mean_on <- mean(raw_data_us$hostile_online)
 us_mean_off <- mean(raw_data_us$hostile_offline)
 dk_mean_on <- mean(raw_data_dk$hostile_online)
 dk_mean_off <- mean(raw_data_dk$hostile_offline)
-
+#add all of the values into a tibble
 mean_table <- tibble(
   Category = c("US_ON", "US_OFF", "DK_ON", "DK_OFF"),
   Mean = c(us_mean_on, us_mean_off, dk_mean_on, dk_mean_off)
 )
-
+#make a table
 kable(mean_table)
 ```
 
