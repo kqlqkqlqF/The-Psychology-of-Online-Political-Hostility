@@ -12,7 +12,7 @@ library(testthat)
 
 #### Test simulated data ####
 # read the dataset
-data <- read_csv("starter_folder-main/data/simulated_data/simulated_data.csv")
+data <- read_csv("main_folder/data/simulated_data/simulated_data.csv")
 
 # Test that the data frame has the correct column names
 test_that("Data frame has correct column names", {
@@ -43,12 +43,12 @@ test_that("Data values are in the correct range", {
 # Test that the data file is correctly generated
 test_that("Data file is correctly generated", {
   # Check if the expected CSV file exists in the specified directory
-  expect_true(file.exists("starter_folder-main/data/simulated_data/simulated_data.csv"))
+  expect_true(file.exists("main_folder/data/simulated_data/simulated_data.csv"))
 })
 
 #### Test cleaned data ####
 # read the dataset
-data1 <- read_csv("starter_folder-main/data/analysis_data/combined_cleaned_data.csv")
+data1 <- read_csv("main_folder/data/analysis_data/combined_cleaned_data.csv")
 
 # Test that the data frame has the correct column names
 test_that("Data frame has correct column names", {
@@ -83,6 +83,6 @@ test_that("Data values are in the correct range", {
 # Test that the data file is correctly generated
 test_that("Data file is correctly generated", {
   # Check if the expected CSV file exists in the specified directory
-  expect_true(file.exists("starter_folder-main/data/analysis_data/combined_cleaned_data.csv"))
+  expect_true(file.exists("main_folder/data/analysis_data/combined_cleaned_data.csv"))
 })
 

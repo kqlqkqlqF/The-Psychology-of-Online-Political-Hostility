@@ -53,7 +53,7 @@ data <- data.frame(
 )
 
 # Create directory if it doesn't exist
-dir.create("starter_folder-main/data/simulated_data", showWarnings = FALSE, recursive = TRUE)
+dir.create("main_folder/data/simulated_data", showWarnings = FALSE, recursive = TRUE)
 
 # Add an ID column for sequence numbers
 data$ID <- seq_len(nrow(data))
@@ -63,7 +63,7 @@ data <- data %>% select(ID, everything())
 names(data)[1] <- "NO."
 
 # Write data to a CSV file
-write.csv(data, file = "starter_folder-main/data/simulated_data/simulated_data.csv", row.names = FALSE)
+write.csv(data, file = "main_folder/data/simulated_data/simulated_data.csv", row.names = FALSE)
 
 
 

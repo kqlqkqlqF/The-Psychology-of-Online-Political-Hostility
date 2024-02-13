@@ -15,19 +15,19 @@ library(dplyr)
 #### Import data ####
 raw_us_2018 <-
   read_csv(
-    file = "starter_folder-main/data/raw_data/s1_us_2018.csv",
+    file = "main_folder/data/raw_data/s1_us_2018.csv",
     show_col_types = FALSE
   )
 
 raw_dk_2019 <-
   read_csv(
-    file = "starter_folder-main/data/raw_data/s2_dk_2019.csv",
+    file = "main_folder/data/raw_data/s2_dk_2019.csv",
     show_col_types = FALSE
   )
 
 raw_us_2021 <-
   read_csv(
-    file = "starter_folder-main/data/raw_data/s4_us_2021.csv",
+    file = "main_folder/data/raw_data/s4_us_2021.csv",
     show_col_types = FALSE
   )
 
@@ -91,7 +91,7 @@ head(combined_cleaned_data)
 #Save combined total data
 write_csv(
   x = combined_cleaned_data,
-  file = "starter_folder-main/data/analysis_data/combined_cleaned_data.csv"
+  file = "main_folder/data/analysis_data/combined_cleaned_data.csv"
 )
 
 
@@ -113,7 +113,7 @@ head(combined_cleaned_data_us)
 #Save combined us data
 write_csv(
   x = combined_cleaned_data_us,
-  file = "starter_folder-main/data/analysis_data/combined_cleaned_data_us.csv"
+  file = "main_folder/data/analysis_data/combined_cleaned_data_us.csv"
 )
 
 
@@ -129,6 +129,6 @@ raw_dk_2019_2 <- raw_dk_2019_2 %>%
 #Save dk data
 write_csv(
   x = raw_dk_2019_2,
-  file = "starter_folder-main/data/analysis_data/combined_cleaned_data_dk.csv"
+  file = "main_folder/data/analysis_data/combined_cleaned_data_dk.csv"
 )
 
