@@ -8,6 +8,7 @@ format:
   pdf:
     toc: true
     number-sections: true
+thanks: "Code and data are available at: https://github.com/kqlqkqlqF/The-Psychology-of-Online-Political-Hostility.git. This paper is replicated from paper the Psychology of Online Political Hostility -- A Comprehensive, Cross-National Test of the Mismatch Hypothesis, available at : https://doi.org/10.1017/S0003055421000885."
 abstract: "In contemporary society, the widespread influence of the internet and electronic technology has made the online world an indispensable part of daily human life. However, amidst this digitalization, a significant challenge has emerged: the proliferation of hostile online discussion environments. This phenomenon has sparked a fundamental inquiry: why do online interactions consistently exhibit greater hostility than offline communication? What is the relationship between this trend and individuals' inherent aggressiveness? This paper aims to replicate and analyze data from existing studies investigating the statistical disparities in individual behavior during online and offline political discussions. Additionally, it employs secondary research to explore how individuals' levels of aggressiveness correlate with the observed differences in online and offline political discourse."
 bibliography: referencespaper2.bib
 ---
