@@ -9,7 +9,7 @@ format:
     toc: true
     number-sections: true
 thanks: "Code and data are available at: https://github.com/kqlqkqlqF/The-Psychology-of-Online-Political-Hostility.git. This paper is replicated from paper the Psychology of Online Political Hostility -- A Comprehensive, Cross-National Test of the Mismatch Hypothesis, available at : https://doi.org/10.1017/S0003055421000885."
-abstract: "In contemporary society, the widespread influence of the internet and electronic technology has made the online world an indispensable part of daily human life. However, amidst this digitalization, a significant challenge has emerged: the proliferation of hostile online discussion environments. This phenomenon has sparked a fundamental inquiry: why do online interactions consistently exhibit greater hostility than offline communication? What is the relationship between this trend and individuals' inherent aggressiveness? This paper aims to replicate and analyze data from existing studies investigating the statistical disparities in individual behavior during online and offline political discussions. Additionally, it employs secondary research to explore how individuals' levels of aggressiveness correlate with the observed differences in online and offline political discourse."
+abstract: "In contemporary society, the widespread influence of the internet and electronic technology has made the online world an indispensable part of daily human life. However, amidst this digitalization, a significant challenge has emerged: the proliferation of hostile online discussion environments.  This paper aims to replicate and analyze data from existing studies investigating the statistical disparities in individual behavior during online and offline political discussions. Additionally, it employs secondary research to explore how individuals' levels of aggressiveness correlate with the observed differences in online and offline political discourse. Our findings indicate that there is no substantial variance in hostility levels between online and offline political discussions, irrespective of an individual's level of aggression."
 bibliography: referencespaper2.bib
 ---
 
@@ -23,13 +23,16 @@ bibliography: referencespaper2.bib
 # Author: Yiyi Feng, Yingxvan Sun
 # Date: Febraury 12, 2024
 # Contact: yiyi.feng@mail.utoronto.ca, lindayx.sun@mail.utoronto.ca
-
 ####Workspace setup ####
 library(tidyverse)
 library(janitor)
 library(knitr)
 library(ggplot2)
 library(kableExtra)
+library(patchwork)
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load("stargazer", "here", "gridExtra", "weights", "tidyverse",
+               "jtools", "clubSandwich", "lm.beta")
 
 #import data
 raw_data_full <-
@@ -46,6 +49,16 @@ raw_data_dk <-
   read_csv(
     file = "../data/analysis_data/combined_cleaned_data_dk.csv",
     show_col_types = FALSE)
+
+df.us <- readRDS(here("main_folder/data/raw_data", "s1_us_2018.rds"))
+
+df.dk <- readRDS(here("main_folder/data/raw_data", "s2_dk_2019.rds"))
+
+df.us2 <- readRDS(here("main_folder/data/raw_data", "s3_us_2019.rds"))
+
+df.us3.part <- readRDS(here("main_folder/data/raw_data", "s4_us_2021.rds"))  %>% 
+  filter(part_online > 0 & part_offline > 0)  
+
 ```
 
 # Introduction [^1]
@@ -58,7 +71,7 @@ The article "The Psychology of Online Political Hostility: A Comprehensive, Cros
 
 Based on the psychological viewpoints mentioned earlier and the survey results of Bor Alexander and Michael Bang Petersen, we have made an assumption: individuals with more aggressive personalities are more likely to exhibit different behaviors in online and offline political discussions, because in the unregulated world of the internet, they are more likely to display aggression beyond offline discussions. Our study primarily focuses on two aspects: (1) comparing political discussions in online and offline environments and (2) evaluating differences in the level of aggression among individuals. In summary, our article will first discuss the data sources and analysis methods used in the original paper. Then, we will conduct secondary analysis on the data from the original paper to discuss whether our hypothesis, "individuals with more aggressive personalities are more likely to exhibit different behaviors in online and offline political discussions," holds true.
 
-[^1]: Rstudio [@citeR] was used for producing the code and this paper. A series of R packages were used: [@gg2], [@knitr], [@kable], [@janet], and [@tidy].
+[^1]: Rstudio [@citeR] was used for producing the code and this paper. A series of R packages were used: [@gg2], [@knitr], [@kable], [@janet], [@pac], [@patch], [@test] and [@tidy].
 
 # Data
 
@@ -208,7 +221,7 @@ dk_mean_on <- mean(raw_data_dk$hostile_online)
 dk_mean_off <- mean(raw_data_dk$hostile_offline)
 #add all of the values into a tibble
 mean_table <- tibble(
-  Category = c("US_ON", "US_OFF", "DK_ON", "DK_OFF"),
+  Category = c("US-ON", "US-OFF", "DK-ON", "DK-OFF"),
   Mean = c(us_mean_on, us_mean_off, dk_mean_on, dk_mean_off)
 )
 #make a table
@@ -217,18 +230,60 @@ kable(mean_table)
 
 In (@fig-tab-three), we present the average hostility levels of political discussions, both online and offline, in Denmark and the United States. It is evident that regardless of whether the discussions are conducted online or offline, the level of political discussion hostility is higher in the United States compared to Denmark. Combining these findings with those presented in Table 2, we can conclude that there is a significant difference in the hostility levels of political discussions between the United States and Denmark, with the United States exhibiting higher hostility levels in both online and offline discussions.
 
+```{r}
+#| label: fig-half
+#| fig-cap: Distribution of Perceived Negativity of Online and Offline Discussions in the United States and Denmark 
+#| echo: false
+#| message: false
+#| warning: false
+
+# US plot
+p1.us <- df.us %>%  
+  select(tone_offline_neg, tone_online_neg) %>% 
+  gather(environment, value, 1:2) %>% 
+  mutate(environment = factor(environment, levels = c("tone_online_neg", "tone_offline_neg"), labels = c("Online", "Offline"))) %>% 
+  ggplot(aes(x = value, fill = environment)) + 
+  geom_density(alpha = 0.6) + 
+  xlab("") + 
+  ylab("Density") + 
+  scale_fill_grey(guide = FALSE) + 
+  ggtitle("A. USA") +
+  theme_bw()
+
+# DK plot
+p1.dk <- df.dk %>%  
+  select(tone_offline_neg, tone_online_neg) %>% 
+  gather(environment, value, 1:2) %>% 
+  mutate(environment = factor(environment, levels = c("tone_online_neg", "tone_offline_neg"), labels = c("Online", "Offline"))) %>% 
+  ggplot(aes(x = value, fill = environment)) + 
+  geom_density(alpha = 0.6) + 
+  xlab("") + 
+  ylab("") + 
+  scale_fill_grey(name = NULL) + 
+  ggtitle("B. Denmark") +
+  theme_bw()
+
+# Combine plots using patchwork
+p1 <- p1.us + p1.dk + plot_layout(ncol = 2)
+
+# Print combined plot
+p1
+```
+
+In (@fig-half), the negativity of online (dark gray) and offline (light gray)
+discussions were demonstrated. Although there's no statistically significant difference between hostile levels in online and offline political discussions, we can still see that in both countries, offline discussions have low negativity compared with online discussions. Similarly, there are more online discussions with a higher negativity. As a result, we can still conclude there's a general trend of people being more hostile in online political discussions, although the statistical test doesn't support this idea.
+
 # Discussion
 
+In the original study, the authors delved into the influence of status-driven risk-taking behavior on hostility, both online and offline, uncovering a positive correlation. Building upon this groundwork, our aim was to shed further light on the role of aggressiveness while emphasizing the intricate relationship between individual traits and political hostility across different communication mediums. Leveraging insights from pertinent psychological literature, we posited that there exists a positive correlation between an individual's level of aggressiveness and the intensity of hostility exhibited in their online and offline political exchanges.
 
-Our analysis reveals a positive correlation between individuals' levels of aggression and the degree of hostility they exhibit in both online and offline political discussions. This suggests that individuals with higher aggression tend to display more pronounced political hostility regardless of the medium. While the original paper focused on the impact of status-driven risk-taking on online versus offline hostility, finding a positive correlation, our study extends this understanding by demonstrating that the dimension of aggression plays a similar role, highlighting the significant influence of personal traits on political hostility in both platforms.
+However, contrary to our initial hypothesis, our empirical findings did not reveal a significant correlation between aggressiveness and the disparities in hostility observed across online and offline environments. This unexpected result challenges the conventional belief that heightened aggressiveness would lead to a discernible escalation in the severity of political conflicts, particularly in the context of online interactions characterized by increased anonymity and diminished accountability.
 
-Contrary to our initial hypothesis that individuals with aggressive personalities would exhibit more different behaviors in online versus offline political discussions, our data did not show a correlation between aggression levels and the difference in hostility between these two contexts. This finding diverges from our expectations and suggests that, despite the increased anonymity and lack of accountability online, aggression does not significantly alter the perceived severity of political conflicts between online and offline environments. This is in line with the original paper's suggestion that political conflicts are not perceived to be more severe online than offline, indicating that individuals with aggressive traits do not differ markedly from average participants in their perception of hostility severity across these platforms.
+Furthermore, our study yielded a conclusion consistent with the original paper, indicating that the perceived severity of political conflicts online does not necessarily surpass that of offline discussions. Additionally, individuals with aggressive tendencies did not demonstrate a statistically significant difference in their perception of hostility on these digital platforms compared to non-aggressive participants.
 
-In summary, our replication study reveals that individual aggressiveness correlates with increased political hostility, uniformly affecting both online and offline discussions. Crucially, it also indicates that there is not a significant correlation between aggression levels and the difference in hostility between these two contexts even for the more aggressive Internet users. This finding challenges the premise that digital environments inherently amplify political antagonism, instead highlighting the overarching role of inherent personal traits in dictating the tone of political discourse, irrespective of the medium.
+In summary, our replication study contributes to the growing understanding of the dynamics between individual aggressiveness and political hostility, highlighting their influence on discussions across both online and offline arenas. Importantly, it underscores the nuanced nature of these relationships, suggesting that even among more aggressive internet users, the impact of aggressiveness on the divergence in hostility between online and offline environments may not be statistically significant. This nuanced perspective challenges the notion that digital platforms inherently exacerbate political confrontations, emphasizing instead the pivotal role of inherent individual traits in shaping the discourse tone, irrespective of the communication medium.
 
 ## Limitation
-
-This study has room for improvement. 
 
 Firstly, as mentioned earlier, the data used in this study comes from the original data of Bor Alexander and Michael Bang Petersen's research. Although they collected over 4800 survey results from the United States and Denmark, the data from Denmark amounted to only about one thousand, while the data from the United States overwhelmingly dominated with around 3800 responses. Despite the data from the United States being used extensively, the imbalance in sample sizes between the two countries may lead to errors in the overall data results. This is because the United States was characterized as a high-polarization, high-conflict, low-trust, and low-participation country, while Denmark was described as a low-polarization, low-conflict, high-trust, and high-participation country [@nels], and researchers believed that these opposite characteristics could make the results representative of a wider range of applications. In fact, we also verified this point in the results,  in online and offline political discussions, the hostility level of the American sample was significantly higher than that of the Danish sample. Therefore, the unequal sample sizes of the United States and Denmark may bias the research results towards the political discussion environment in the United States.
 
@@ -242,6 +297,7 @@ Thirdly, we can try to include more questions that collect objective data and co
 
 Furthermore, in this study, we found that the level of aggression does not affect the hostility exhibited by individuals in online and offline political discussions. Therefore, we will explore other factors that may contribute to the difference in hostility between online and offline discussions. Additionally, since we obtained the same results as the original paper,  that is there is no significant difference in hostility between online and offline political discussions, we can also investigate the interesting question: if there is no difference in hostility between online and offline discussions, why do people generally perceive online discussions as more hostile? This will be an important direction for our future research.
 
+\newpage
 # Appendix
 
 The full questionnaire:

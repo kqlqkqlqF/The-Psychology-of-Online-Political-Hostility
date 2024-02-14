@@ -1,9 +1,10 @@
 #### Preamble ####
-# Purpose: test the simulated dataset
+# Purpose: test the simulated and cleaned dataset
 # Author: Yingxuan Sun
 # Date: 11 February 2023
 # Contact: lindayx.sun@mail.utoronto.ca
 # License: MIT
+# Pre-requisites: [simulated_data.csv, combined_cleaned_data.csv]
 
 
 #### Workspace setup ####
