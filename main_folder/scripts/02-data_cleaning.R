@@ -1,12 +1,10 @@
 #### Preamble ####
-# Purpose: Clean the data up so that only the columes we need remained
+# Purpose: Clean the data up so that only the columns we need remained
 # Author: Yiyi Feng
 # Date: 10 February 2024
 # Contact: yiyi.feng@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: [s1_us_2018.csv, s2_dk_2019.csv,s4_us_2021.csv]
-# Any other information needed? nope
-
 
 #### Workspace setup ####
 library(tidyverse)
