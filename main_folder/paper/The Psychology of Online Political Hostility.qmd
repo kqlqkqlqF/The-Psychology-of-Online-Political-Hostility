@@ -8,7 +8,7 @@ format:
   pdf:
     toc: true
     number-sections: true
-thanks: "Code and data are available at: https://github.com/kqlqkqlqF/The-Psychology-of-Online-Political-Hostility.git. This paper is replicated from paper the Psychology of Online Political Hostility -- A Comprehensive, Cross-National Test of the Mismatch Hypothesis, available at : https://doi.org/10.1017/S0003055421000885."
+thanks: "Code and data are available at: https://github.com/kqlqkqlqF/The-Psychology-of-Online-Political-Hostility.git. This paper is replicated from paper the Psychology of Online Political Hostility -- A Comprehensive, Cross-National Test of the Mismatch Hypothesis, available at : https://doi.org/10.1017/S0003055421000885. The Reproduction DOI is at: https://doi.org/10.48152/ssrp-h9kq-h362."
 abstract: "In contemporary society, the widespread influence of the internet and electronic technology has made the online world an indispensable part of daily human life. However, amidst this digitalization, a significant challenge has emerged: the proliferation of hostile online discussion environments.  This paper aims to replicate and analyze data from existing studies investigating the statistical disparities in individual behavior during online and offline political discussions. Additionally, it employs secondary research to explore how individuals' levels of aggressiveness correlate with the observed differences in online and offline political discourse. Our findings indicate that there is no substantial variance in hostility levels between online and offline political discussions, irrespective of an individual's level of aggression."
 bibliography: referencespaper2.bib
 ---
@@ -170,7 +170,6 @@ The relationship between level of aggression and the difference between online a
 
 In addition to examining the relationship between aggression levels and the degree of hostility in online and offline discussions, we conducted t-tests to assess the differences in hostility between online and offline political exchanges. This aimed to determine whether there were statistically significant differences in the hostility levels between online and offline political discussions. For a comprehensive analysis, we performed t-tests separately for (1) the overall data on online and offline hostility, (2) data collected exclusively in the United States, (3) data collected solely in Denmark, (4) online hostility in US data compared to Danish data, and (5) offline hostility in US data compared to Danish data. The results of these t-tests are presented in (@fig-tab-two).
 
-\newpage
 ```{r}
 #| label: fig-tab-two
 #| fig-cap: Summery of T-Test result

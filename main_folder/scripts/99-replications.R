@@ -5,7 +5,7 @@
 # Contact: yiyi.feng@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: [s1_us_2018.rds, s2_dk_2019.rds, s3_us_2019.rds, s4_us_2021.rds]
-# Any other information needed? nope
+# Any other information needed? The Reproduction DOI is at: https://doi.org/10.48152/ssrp-h9kq-h362."
 
 
 #### Workspace setup ####
